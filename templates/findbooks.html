@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+{% block title %}
+    <meta charset="utf-8">
+    <title>Search books</title>
+    <style>
+      form{
+        text-align:center;
+        padding:10px;
+      }
+      input{
+        color:#FB0541;
+
+      }
+      label{
+        margin:5px 10px 5px 0;
+      }
+      .btn{
+              background-color:#FB0541;
+              opacity: 100%;
+              color:#ffffff;
+              font-weight: bold;
+              margin:10px;
+        }
+      .btn:hover{
+      background-color: white;
+      color:#FB0541;
+      }
+
+ .nav{
+   position:absolute;
+ }
+ .table{
+   margin-top:5%;
+ }
+.container{
+margin-right:50%;
+}
+    </style>
+  {% endblock %}
+  {% block body %}
+    {% if not books: %}
+    <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-sm">
+      </div>
+      <div class="col-sm-8 align-self-center justify-content-center">
+
+        <div class="content">
+          <form class="form-inline bg-primary" action="/search">
+            <label for="book"><h5>Enter Book ISBN/title/AuthorName : </h5></label>
+            <input type="search" class="form-control" placeholder="Enter book details" name="book">
+            <button type="submit" class="btn">Search</button>
+              </form>
+
+        </div>
+      </div>
+        <div class="col-sm">
+
+
+       </div>
+       </div>
+       </div>
+        {% endif %}
+          {% if books: %}
+          <div class="container h-100 mx-auto">
+          <div class="row justify-content-center align-items-center">
+            <div class="col">
+            </div>
+            <div class="col-sm-8 align-self-center justify-content-center">
+          <div class="content">
+              <form class="form-inline bg-primary justify-around" action="/search">
+                <label for="book"><h5>Enter Book ISBN/title/AuthorName : </h5></label>
+                <input type="search" class="form-control" placeholder="Enter book details" name="book">
+                <button type="submit" class="btn">Search</button>
+                  </form>
+
+              <table class="table table-hover table-responsive-small">
+                {% for book in books:%}
+                <tbody>
+
+                <tr>
+
+                  <td><a href="/search/{{book.isbn}}">{{book.isbn}}</a></td>
+                  <td>{{book.title}}</td>
+                  <td>{{book.author}}</td>
+                  <td>{{book.pubyr}}</td>
+
+                </tr>
+              </tbody>
+                {% endfor %}
+              </table>
+
+              </div>
+            </div>
+            <div class="col">
+
+            </div>
+           </div>
+           </div>
+          {% endif %}
+
+        {% endblock %}
