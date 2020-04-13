@@ -1,0 +1,60 @@
+
+{% extends "layout.html" %}
+
+{% block title %}
+    <title>bookopedia</title>
+    <style media="screen">
+    .content blockquote{
+      font-weight: bold;
+      color: #000000;
+      opacity:100%;
+
+    }
+    .content a{
+      font-weight: bold;
+      opacity:100%;
+      }
+  .login-link{
+    color:#FB0541;
+  }
+      #signup{
+              background-color:#FB0541;
+              opacity: 100%;
+              color:#ffffff;
+
+        }
+      #signup:hover{
+      background-color: white;
+      color:#FB0541;
+      }
+      .login-link:hover{
+      color:#FB0541;
+      }
+  </style>
+  {% endblock %}
+  {% block body %}
+  <div class="container h-100 mx-auto">
+
+  <div class="row justify-content-center align-items-center">
+    <div class="col-2">
+    </div>
+    <div class="col-8 align-self-center justify-content-center">
+
+<div class="content">
+  <blockquote class="blockquote text-center">
+    <h1 class="mb-0">“A reader lives a thousand lives before he dies. The man who never reads lives only one.”</h1>
+    <footer class="blockquote-footer">George R.R. Martin</footer>
+  </blockquote>
+  <br><br>
+     {% if not session["name"] %}
+  <a href="/register" id="signup" class="btn btn-lg">Signup</a>
+  <a href="/login" class="login-link"><h5>Login</h5></a>
+      {% endif %}
+</div>
+</div>
+<div class="col-2">
+
+</div>
+</div>
+</div>
+{% endblock %}
