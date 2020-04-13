@@ -1,0 +1,36 @@
+@media (max-width: 599px) {
+  nav ul #brandname {
+    visibility: hidden; } }
+html {
+  background: url("../../static/images/background.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
+#brandname {
+  font-family: sans-serif; }
+
+.content {
+  opacity: 0.9;
+  background-color: #ffffff;
+  position: absolute;
+  padding: 5%;
+  vertical-align: middle;
+  margin-top: 15%;
+  text-align: center;
+  width: inherit; }
+
+.navbar {
+  width: 100%;
+  position: relative;
+  margin-top: 5%;
+  justify-content: left;
+  text-align: left;
+  background-color: rgba(0, 0, 0, 0.8);
+  font-size: 100%; }
+
+.navbar a:hover {
+  color: #FFC300; }
+
+/*# sourceMappingURL=layout.css.map */
