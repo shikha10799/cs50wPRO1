@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block title %}
+    <title>API</title>
+    <style media="screen">
+    .btn{
+            background-color:#FB0541;
+            opacity: 100%;
+            color:#ffffff;
+            font-weight: bold;
+
+      }
+    .btn:hover{
+    background-color: white;
+    color:#FB0541;
+    }
+    </style>
+    {% endblock %}
+    {% block body %}
+    <div class="container h-100 mx-auto">
+
+    <div class="row justify-content-center align-items-center">
+      <div class="col-2">
+      </div>
+      <div class="col-8 align-self-center justify-content-center">
+    <div class="content">
+<form action="/api" method="POST">
+  <form>
+  <div class="form-group">
+  <input type="text" class="form-control bg-light text-dark" name="isbn" placeholder="Enter ISBN">
+</div>
+<button type="submit" class="btn">Submit</button>
+</form>
+</form>
+<div class="jumbotron">
+  <h1 class="display-4">Welcome to the Bookopedia api !!</h1>
+  <p class="lead">You can also access the api using th following URL.(Note:Login required to access the URL)</p>
+  <hr class="my-4">
+  <h6>URL:</h6> <p>  /api/:isbn </p>
+  *Provide the isbn of the required book in place of <h6>:isbn</h6>.
+</div>
+</div>
+</div>
+<div class="col-2">
+
+</div>
+</div>
+</div>
+{% endblock %}

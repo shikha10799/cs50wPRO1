@@ -1,0 +1,103 @@
+
+{% extends "layout.html" %}
+
+  {% block title %}<title>{{bookdetails.title}}</title>
+    <link rel="stylesheet" href="../static/stylesheets/results.css">
+  <style media="screen">
+    h1{
+      font-family:cursive;
+    }
+    .book-bg{
+    position:inherit;
+    width:50%;
+          }
+    .book-cover{
+      position:absolute;
+      height:35%;
+      width:30%;
+      left:34.5%;
+      top:15%;
+      border-radius:30%;
+    }
+    .form-group{
+      text-align:left;
+    }
+    .form-group button{
+      margin-top:10px;
+    }
+    .form-control{
+      background-color:#808080;
+    }
+  </style>{% endblock %}
+
+  {% block body %}
+  <div class="container h-100 mx-auto">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-sm">
+
+    </div>
+    <div class="col-sm-10">
+      <div class="content">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm" id ="bookinfo">
+            <img class="book-bg" src="../static/images/titlebg.png">
+            <img class = "book-cover" src="http://covers.openlibrary.org/b/isbn/{{bookdetails.isbn}}-M.jpg" style="Filter: Alpha(Opacity=100, FinishOpacity=0, Style=2, StartX=20, StartY=40, FinishX=0, FinishY=0)" alt="Error:Image not found">
+              <blockquote class="blockquote">
+                <h1 class="mb-0">{{bookdetails.title}}</h1>
+                <footer class="blockquote-footer">{{bookdetails.author}}<br>
+                  Isbn : <cite title="Source Title text-success">{{bookdetails.isbn}}</cite><br>
+                  Publication year : <cite title="Source Title">{{bookdetails.pubyr}}</cite><br>
+                  Goodreads no. of ratings : <cite title="Source Title">{{goodreads_data['work_ratings_count']}}</cite><br>
+                  Goodreads Avg. rating : <cite title="Source Title">{{goodreads_data['average_rating']}}</cite><br>
+                  <a href="https://www.goodreads.com/search?q={{bookdetails.title}}">Goodreads page</a><br>
+                </footer>
+              </blockquote>
+            </div>
+
+          </div>
+        </div>
+        <div class="container">
+
+          <form action="/search/{{bookdetails.isbn}}" method="post">
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Enter your review here : </label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Not more than 500 characters" rows="3" name = "review"></textarea>
+              <label for="rating">Rate the Book : </label>
+              <input class="form-control" id ="rating" type="text" placeholder="between 1 to 5" name = "rating">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+        <div class="container">
+          <h1>Reviews</h1>
+          {% if reviews : %}
+          <ul class="comment-section">
+            {% for review in reviews: %}
+  			<li class="comment user-comment">
+
+                  <div class="info">
+                      <a href="#">{{review.name}}</a>
+                      <span>{{review.time}}</span>
+                  </div>
+
+
+                  <p>{{review.text}}<br>
+                  Rating:{{review.rating}}</p>
+  			</li>
+              {% endfor %}
+
+  		</ul>
+      {% else : %}
+        <h5>No Reviews.</h5>
+{% endif %}
+
+            </div>
+      </div>
+    </div>
+<div class="col-sm">
+
+</div>
+</div>
+</div>
+  {% endblock %}
